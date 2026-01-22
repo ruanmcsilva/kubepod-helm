@@ -33,3 +33,7 @@ Production-ready Kubernetes platform using Helm and GitOps.
 Documented real failure scenarios:
 - ImagePullBackOff
 - Rollback strategy
+
+## System Architecture
+- The diagram illustrates the flow from code commit to automated deployment,
+  including security boundaries and scaling policies.
