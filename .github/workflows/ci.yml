@@ -33,8 +33,10 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/kubepod-app:latest
 
       - name: Update GitOps repo
+        env:
+          GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
         run: |
-          git clone https://x-access-token:${{ secrets.GITOPS_TOKEN }}@github.com/ruanmcsilva/kubepod-gitops.git
+          git clone https://x-access-token:${GITOPS_TOKEN}@github.com/ruanmcsilva/kubepod-gitops.git
           cd kubepod-gitops
           sed -i "s/tag:.*/tag: \"${{ github.sha }}\"/" kubepod/values-prod.yaml
           git config user.name "github-actions"
