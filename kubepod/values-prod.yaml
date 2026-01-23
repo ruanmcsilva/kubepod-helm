@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: kubepod-app
-  tag: "2.0"
+  tag: "3694b20f9dc0d9a67d99922313af8eea5a4109c2"
   pullPolicy: Never
 
 resources:
