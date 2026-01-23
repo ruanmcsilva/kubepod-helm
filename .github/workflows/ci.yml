@@ -32,17 +32,12 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/kubepod-app:${{ github.sha }}
             ghcr.io/${{ github.repository_owner }}/kubepod-app:latest
 
-      - name: Update GitOps repo
-        env:
-          GITOPS_TOKEN: ${{ secrets.GITOPS_TOKEN }}
+        - name: Update GitOps repo
         run: |
-          # Remove a pasta se ela já existir para evitar o erro fatal
-          rm -rf kubepod-gitops
-
-          git clone https://x-access-token:${GITOPS_TOKEN}@github.com/ruanmcsilva/kubepod-gitops.git
-          cd kubepod-gitops
           sed -i "s/tag:.*/tag: \"${{ github.sha }}\"/" kubepod/values-prod.yaml
+
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git commit -am "Update image tag to ${{ github.sha }}"
+          git add kubepod/values-prod.yaml
+          git commit -m "Update image tag to ${{ github.sha }} [skip ci]"
           git push
