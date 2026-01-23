@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: kubepod-app
+  repository: ghcr.io/SEU_USUARIO/kubepod-app
   pullPolicy: IfNotPresent
-  tag: "1.0"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
