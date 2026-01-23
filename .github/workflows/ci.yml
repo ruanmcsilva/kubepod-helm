@@ -33,11 +33,10 @@ jobs:
             ghcr.io/${{ github.repository_owner }}/kubepod-app:latest
 
         - name: Update GitOps repo
-        run: |
-          sed -i "s/tag:.*/tag: \"${{ github.sha }}\"/" kubepod/values-prod.yaml
-
+          run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+          sed -i "s/tag:.*/tag: \"${{ github.sha }}\"/" kubepod/values-prod.yaml
           git add kubepod/values-prod.yaml
-          git commit -m "Update image tag to ${{ github.sha }} [skip ci]"
+          git commit -m "chore: update image tag to ${{ github.sha }} [skip ci]"
           git push
