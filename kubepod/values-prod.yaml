@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: ghcr.io/ruanmcsilva/kubepod-app
-  tag: "3694b20f9dc0d9a67d99922313af8eea5a4109c2"
+  tag: "79c36a0cb4f839f0cd48facc1475b4c9b365f3b4"
   pullPolicy: IfNotPresent
 
 resources:
